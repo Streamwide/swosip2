@@ -237,6 +237,7 @@ static int osip_body_parse_header(osip_body_t *body, const char *start_of_osip_b
     i = __osip_find_next_crlf(start_of_line, &end_of_line);
 
     if (i == -2) {
+      return OSIP_SYNTAXERROR;
     } else if (i != 0)
       return i; /* error case: no end of body found */
 
