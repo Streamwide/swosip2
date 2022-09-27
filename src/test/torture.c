@@ -35,7 +35,7 @@ static void usage() {
 }
 
 static int read_binary(char **msg, int *len, FILE *torture_file) {
-  *msg = (char *) osip_malloc(100000); /* msg are under 100000 */
+  *msg = (char *) osip_malloc(100001); /* msg are under 100000 */
 
   *len = fread(*msg, 1, 100000, torture_file);
   return ferror(torture_file) ? -1 : 0;
