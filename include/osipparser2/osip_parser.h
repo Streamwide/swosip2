@@ -24,7 +24,7 @@
 
 /**
  * @file osip_parser.h
- * @brief oSIP SIP Parser additionnal Routines
+ * @brief oSIP SIP Parser additional Routines
  *
  */
 

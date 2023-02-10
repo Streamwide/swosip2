@@ -159,7 +159,7 @@ int osip_via_parse(osip_via_t *via, const char *hvalue) {
 
   osip_clrncpy(via->version, version + 1, protocol - version - 1);
 
-  /* Here: we avoid matching an additionnal space */
+  /* Here: we avoid matching an additional space */
   host = strchr(protocol + 1, ' ');
 
   if (host == NULL)
