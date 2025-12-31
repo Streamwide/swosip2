@@ -1,5 +1,5 @@
 AC_PREREQ([2.72])
-AC_INIT([libosip2],[5.3.1])
+AC_INIT([libosip2],[5.3.2])
 AC_CONFIG_SRCDIR([include/osip2/osip.h])
 
 AC_MSG_NOTICE([libosip2                The GNU Open SIP library.])
