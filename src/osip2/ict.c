@@ -56,7 +56,7 @@ int __osip_ict_init(osip_ict_t **ict, osip_t *osip, osip_message_t *invite) {
 
 #ifdef USE_BLOCKINGSOCKET
 
-    if (osip_strcasecmp(proto, "TCP") != 0 && osip_strcasecmp(proto, "TLS") != 0 && osip_strcasecmp(proto, "SCTP") != 0) {
+    if (osip_via_protocol_is_reliable(proto) != OSIP_SUCCESS) {
       /* for other reliable protocol than TCP, the timer
       must be desactived by the external application */
       (*ict)->timer_a_length = DEFAULT_T1;
@@ -80,7 +80,7 @@ int __osip_ict_init(osip_ict_t **ict, osip_t *osip, osip_message_t *invite) {
   }
 #else
 
-    if (osip_strcasecmp(proto, "TCP") != 0 && osip_strcasecmp(proto, "TLS") != 0 && osip_strcasecmp(proto, "SCTP") != 0) {
+    if (osip_via_protocol_is_reliable(proto) != OSIP_SUCCESS) {
       /* for other reliable protocol than TCP, the timer
       must be desactived by the external application */
       (*ict)->timer_a_length = DEFAULT_T1;

@@ -203,6 +203,8 @@ char *via_get_comment(osip_via_t *header);
  */
 int osip_via_match(osip_via_t *via1, osip_via_t *via2);
 
+int osip_via_protocol_is_reliable(const char* proto);
+
 #ifdef __cplusplus
 }
 #endif

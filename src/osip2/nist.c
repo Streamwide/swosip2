@@ -55,7 +55,7 @@ int __osip_nist_init(osip_nist_t **nist, osip_t *osip, osip_message_t *invite) {
       return OSIP_UNDEFINED_ERROR;
     }
 
-    if (osip_strcasecmp(proto, "TCP") != 0 && osip_strcasecmp(proto, "TLS") != 0 && osip_strcasecmp(proto, "SCTP") != 0) {
+    if (osip_via_protocol_is_reliable(proto) != OSIP_SUCCESS) {
       (*nist)->timer_j_length = 64 * DEFAULT_T1;
       (*nist)->timer_j_start.tv_sec = -1; /* not started */
 

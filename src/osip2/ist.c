@@ -54,7 +54,7 @@ int __osip_ist_init(osip_ist_t **ist, osip_t *osip, osip_message_t *invite) {
       return OSIP_UNDEFINED_ERROR;
     }
 
-    if (osip_strcasecmp(proto, "TCP") != 0 && osip_strcasecmp(proto, "TLS") != 0 && osip_strcasecmp(proto, "SCTP") != 0) {
+    if (osip_via_protocol_is_reliable(proto) != OSIP_SUCCESS) {
       /* for other reliable protocol than TCP, the timer
       must be desactived by the external application */
       (*ist)->timer_g_length = DEFAULT_T1;

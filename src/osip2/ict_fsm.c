@@ -82,7 +82,7 @@ void ict_snd_invite(osip_transaction_t *ict, osip_event_t *evt) {
       return;
     }
 
-    if (osip_strcasecmp(proto, "TCP") != 0 && osip_strcasecmp(proto, "TLS") != 0 && osip_strcasecmp(proto, "SCTP") != 0) {
+    if (osip_via_protocol_is_reliable(proto) != OSIP_SUCCESS) {
     } else {                                 /* reliable protocol is used: */
       ict->ict_context->timer_a_length = -1; /* A is not ACTIVE */
       ict->ict_context->timer_a_start.tv_sec = -1;
@@ -136,7 +136,7 @@ void osip_ict_timeout_a_event(osip_transaction_t *ict, osip_event_t *evt) {
       return;
     }
 
-    if (osip_strcasecmp(proto, "TCP") != 0 && osip_strcasecmp(proto, "TLS") != 0 && osip_strcasecmp(proto, "SCTP") != 0) {
+    if (osip_via_protocol_is_reliable(proto) != OSIP_SUCCESS) {
     } else {                                 /* reliable protocol is used: */
       ict->ict_context->timer_a_length = -1; /* A is not ACTIVE */
       ict->ict_context->timer_a_start.tv_sec = -1;

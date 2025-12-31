@@ -99,14 +99,14 @@ void nict_snd_request(osip_transaction_t *nict, osip_event_t *evt) {
       }
 
       if (i == 0) { /* but message was really sent */
-        if (osip_strcasecmp(proto, "TCP") != 0 && osip_strcasecmp(proto, "TLS") != 0 && osip_strcasecmp(proto, "SCTP") != 0) {
+        if (osip_via_protocol_is_reliable(proto) != OSIP_SUCCESS) {
         } else {                                   /* reliable protocol is used: */
           nict->nict_context->timer_e_length = -1; /* E is not ACTIVE */
           nict->nict_context->timer_e_start.tv_sec = -1;
         }
 
       } else {
-        if (osip_strcasecmp(proto, "TCP") != 0 && osip_strcasecmp(proto, "TLS") != 0 && osip_strcasecmp(proto, "SCTP") != 0) {
+        if (osip_via_protocol_is_reliable(proto) != OSIP_SUCCESS) {
         } else { /* reliable protocol is used: */
           nict->nict_context->timer_e_length = DEFAULT_T1_TCP_PROGRESS;
         }
@@ -190,7 +190,7 @@ void osip_nict_timeout_e_event(osip_transaction_t *nict, osip_event_t *evt) {
       return;
     }
 
-    if (osip_strcasecmp(proto, "TCP") != 0 && osip_strcasecmp(proto, "TLS") != 0 && osip_strcasecmp(proto, "SCTP") != 0) {
+    if (osip_via_protocol_is_reliable(proto) != OSIP_SUCCESS) {
     } else {                                   /* reliable protocol is used: */
       nict->nict_context->timer_e_length = -1; /* E is not ACTIVE */
       nict->nict_context->timer_e_start.tv_sec = -1;
