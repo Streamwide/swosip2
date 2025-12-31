@@ -1,4 +1,4 @@
-AC_PREREQ([2.69])
+AC_PREREQ([2.72])
 AC_INIT([libosip2],[5.3.1])
 AC_CONFIG_SRCDIR([include/osip2/osip.h])
 
@@ -309,7 +309,15 @@ AC_SUBST(FSM_LIB)
 dnl Checks for header files.
 
 dnl This is to be removed for autoconf2.50
-AC_HEADER_STDC
+m4_warn([obsolete],
+[The preprocessor macro 'STDC_HEADERS' is obsolete.
+  Except in unusual embedded environments, you can safely include all
+  C89 headers unconditionally.])dnl
+# Autoupdate added the next two lines to ensure that your configure
+# script's behavior did not change.  They are probably safe to remove.
+AC_CHECK_INCLUDES_DEFAULT
+AC_PROG_EGREP
+
 AC_CHECK_HEADERS(string.h)
 AC_CHECK_HEADERS(strings.h)
 AC_CHECK_HEADERS(stdlib.h)

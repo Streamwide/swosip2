@@ -546,3 +546,20 @@ int osip_via_match(osip_via_t *via1, osip_via_t *via2) {
 
   return OSIP_SUCCESS;
 }
+
+int osip_via_protocol_is_reliable(const char* proto) {
+  static const char* reliable_protos[] = {
+    "TCP", "TLS", "SCTP", "WSS", NULL,
+  };
+  if (proto == NULL) {
+    return OSIP_BADPARAMETER;
+  }
+  int ret = OSIP_UNDEFINED_ERROR;
+  for (int i = 0; reliable_protos[i] && ret == OSIP_UNDEFINED_ERROR; ++i) {
+    if (osip_strcasecmp(proto, reliable_protos[i]) == 0) {
+      ret = OSIP_SUCCESS;
+    }
+  }
+  return ret;
+}
+

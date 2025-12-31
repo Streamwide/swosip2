@@ -58,7 +58,7 @@ int __osip_nict_init(osip_nict_t **nict, osip_t *osip, osip_message_t *request) 
 
 #ifdef USE_BLOCKINGSOCKET
 
-    if (osip_strcasecmp(proto, "TCP") != 0 && osip_strcasecmp(proto, "TLS") != 0 && osip_strcasecmp(proto, "SCTP") != 0) {
+    if (osip_via_protocol_is_reliable(proto) != OSIP_SUCCESS) {
       (*nict)->timer_e_length = DEFAULT_T1;
       (*nict)->timer_k_length = DEFAULT_T4;
       (*nict)->timer_e_start.tv_sec = -1;
@@ -73,7 +73,7 @@ int __osip_nict_init(osip_nict_t **nict, osip_t *osip, osip_message_t *request) 
   }
 #else
 
-    if (osip_strcasecmp(proto, "TCP") != 0 && osip_strcasecmp(proto, "TLS") != 0 && osip_strcasecmp(proto, "SCTP") != 0) {
+    if (osip_via_protocol_is_reliable(proto) != OSIP_SUCCESS) {
       (*nict)->timer_e_length = DEFAULT_T1;
       (*nict)->timer_k_length = DEFAULT_T4;
       (*nict)->timer_e_start.tv_sec = -1;
